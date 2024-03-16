@@ -175,10 +175,10 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_SSL = True
 
 # URL-адрес брокера сообщений
-CELERY_BROKER_URL = 'redis://127.0.0.1:6379' # Например, Redis, который по умолчанию работает на порту 6379
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL') # Например, Redis, который по умолчанию работает на порту 6379
 
 # URL-адрес брокера результатов, также Redis
-CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379'
+CELERY_RESULT_BACKEND = os.getenv('CELERY_RESULT_BACKEND')
 
 # Часовой пояс для работы Celery
 CELERY_TIMEZONE = TIME_ZONE
@@ -199,7 +199,7 @@ CELERY_BEAT_SCHEDULE = {
 TELEGRAM_TOKEN = os.getenv('TELEGRAM_TOKEN')
 
 CORS_ALLOWED_ORIGINS = [
-    '<http://localhost:8000>',  # Замените на адрес вашего фронтенд-сервера
+    'http://localhost:8000',  # Замените на адрес вашего фронтенд-сервера
 ]
 
 CSRF_TRUSTED_ORIGINS = [

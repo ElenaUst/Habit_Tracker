@@ -36,5 +36,5 @@ class HabitValidate:
         if pleasant_habit and (related_habit or reward):
             raise ValidationError('У приятной привычки не может быть вознаграждения или связанной привычки')
 
-        if not pleasant_habit and not reward:
+        if not (pleasant_habit, reward):
             raise ValidationError('У полезной привычки необходимо указать вознаграждение или приятную привычку')
