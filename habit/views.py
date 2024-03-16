@@ -20,7 +20,8 @@ class HabitCreateAPIView(generics.CreateAPIView):
 class HabitRetrieveAPIView(generics.RetrieveAPIView):
     """Класс для просмотра одной привычки"""
     serializer_class = HabitSerializer
-    permission_classes = [IsAuthenticated]
+    queryset = Habit.objects.all()
+    permission_classes = [IsAuthenticated, IsOwner]
 
 
 class HabitUpdateAPIView(generics.UpdateAPIView):
@@ -46,7 +47,7 @@ class HabitOwnerListAPIView(generics.ListAPIView):
     """Класс для просмотра списка привычек пользователя"""
     serializer_class = HabitSerializer
     queryset = Habit.objects.all()
-    permission_classes = [IsAuthenticated, IsOwner]
+    permission_classes = [IsAuthenticated]
     pagination_class = CustomPagination
 
     def get_queryset(self):
