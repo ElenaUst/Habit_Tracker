@@ -14,10 +14,10 @@ def get_data_for_message_habit():
     time_now = datetime.datetime.now().time()
 
     for habit in habits:
-        if date_now == habit.date + habit.periodicity:
-            if time_now == habit.time and habit.pleasant_habit == 'False':
+        if habit.date_habit or (habit.date_habit + datetime.timedelta(days=habit.periodicity)) == date_now:
+            if habit.time == time_now and habit.pleasant_habit is False:
                 user_telegram = Habit.user.telegram
                 message = f'Пришло время {habit.action} в {habit.place}'
-                habit.date = date_now
+                habit.date_habit = date_now
                 habit.save()
                 MyBot().send_message(user_telegram, message)
