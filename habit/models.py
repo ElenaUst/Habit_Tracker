@@ -18,7 +18,7 @@ class Habit(models.Model):
     reward = models.CharField(max_length=150, verbose_name='вознаграждение', blank=True, null=True)
     time_to_complete = models.IntegerField(verbose_name='время на выполнение')
     is_public = models.BooleanField(default=False, verbose_name='признак публичности привычки')
-    date_habit = models.DateField(default=datetime.date.today(), verbose_name='дата последнего выполнения привычки', blank=True, null=True)
+    date_habit = models.DateField(default=datetime.date.today, verbose_name='дата последнего выполнения привычки', blank=True, null=True)
 
     def __str__(self):
         return f'{self.action}'
