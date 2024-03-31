@@ -25,3 +25,11 @@ celery -A config worker -l INFO -P eventlet
 celery -A config beat -l INFO  
 
 Celery worker и Celery beat будут совместно работать для выполнения периодических задач.
+
+ЗАПУСК ЧЕРЕЗ DOCKER
+Для запуска проекта через Docker необходимо установить Docker Desktop
+Затем установить соответствующие настройки для базы данных (в файле settings.py есть два варианта: для запуска через Docker и для запуска локально)
+В терминале выполнить команду docker-compose build, затем docker-compose up.
+Для создания суперпользователя в другом терминале выполнить команду docker-compose exec app python manage.py csu
+На локальной машине проект откроется по адресу 127.0.0.1.8001 или localhost:8001
+
